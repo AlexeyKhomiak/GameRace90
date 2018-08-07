@@ -1,0 +1,99 @@
+﻿<Window x:Class="WPFSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFSample"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        Title="MainWindow"  Width="{Binding Path=Game.WindowWidth, Mode=TwoWay}" Height="{Binding Path=Game.WindowHeight,Mode=TwoWay}" >
+    <Window.DataContext>
+        <local:ViewModel></local:ViewModel>
+    </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding Key="Left" Command="{Binding CarLeft}"></KeyBinding>
+        <KeyBinding Key="Right" Command="{Binding CarRight}"></KeyBinding>
+        <KeyBinding Key="Up" Command="{Binding CarUp}"></KeyBinding>
+        <KeyBinding Key="Down" Command="{Binding CarDown}"></KeyBinding>
+        <KeyBinding Key="Esc" Command="{Binding Stop}"></KeyBinding>
+        <KeyBinding Key="Enter" Command="{Binding Start}"></KeyBinding>
+
+    </Window.InputBindings>
+            <Canvas>
+
+
+        <Image Stretch="UniformToFill"  
+               Source="{Binding Game.Road3.Sprite}" 
+               Width="{Binding Game.Road3.Width}" 
+               Height="{Binding Game.Road3.Height}"></Image>
+        <Image Canvas.Left="{Binding Game.Road1.X}" 
+               Canvas.Top="{Binding Game.Road1.Y}" 
+               Stretch="UniformToFill"  
+               Source="{Binding Game.Road1.Sprite}" 
+               Width="{Binding Game.Road1.Width}" 
+               Height="{Binding Game.Road1.Height}"></Image>
+        <Image Canvas.Left="{Binding Game.Road2.X}" 
+               Canvas.Top="{Binding Game.Road2.Y}" 
+               Stretch="UniformToFill"  
+               Source="{Binding Game.Road2.Sprite}" 
+               Width="{Binding Game.Road2.Width}" 
+               Height="{Binding Game.Road2.Height}"></Image>
+        <Image Stretch="UniformToFill"  
+               Source="{Binding Game.Player.Sprite}"  
+               Width="{Binding Game.Player.Width}" 
+               Canvas.Left="{Binding Game.Player.X}" 
+               Canvas.Top="{Binding Game.Player.Y}"></Image>
+        <Image Stretch="UniformToFill"  
+               Source="{Binding Game.Gasoline.Sprite}"  
+               Width="{Binding Game.Gasoline.Width}" 
+               Canvas.Left="{Binding Game.Gasoline.X}" 
+               Canvas.Top="{Binding Game.Gasoline.Y}"></Image>
+
+        <Image Stretch="UniformToFill"  
+               Source="{Binding Game.Bot1.Sprite}"  
+               Width="{Binding Game.Bot1.Width}" 
+               Canvas.Left="{Binding Game.Bot1.X}" 
+               Canvas.Top="{Binding Game.Bot1.Y}"></Image>
+
+        <Image Stretch="UniformToFill"  
+               Source="{Binding Game.Bot2.Sprite}"  
+               Width="{Binding Game.Bot2.Width}" 
+               Canvas.Left="{Binding Game.Bot2.X}" 
+               Canvas.Top="{Binding Game.Bot2.Y}"></Image>
+
+
+        <Image   
+               Source="{Binding Game.TextStart.Sprite}"  
+               Width="{Binding Game.TextStart.Width}"
+               Height="{Binding Game.TextStart.Height}"
+               Canvas.Left="{Binding Game.TextStart.X}" 
+               Canvas.Top="{Binding Game.TextStart.Y}"></Image>
+
+        <Image   
+               Source="{Binding Game.TextGameOver.Sprite}"  
+               Width="{Binding Game.TextGameOver.Width}"
+               Height="{Binding Game.TextGameOver.Height}"
+               Canvas.Left="{Binding Game.TextGameOver.X}" 
+               Canvas.Top="{Binding Game.TextGameOver.Y}"></Image>
+
+
+        <Label
+            Content="Score: "
+            Foreground="White"
+            FontSize="24"
+            FontWeight="Bold"
+            >
+            
+        </Label>
+        <TextBlock
+            Canvas.Top="7"
+            Canvas.Left="87"
+            Text="{Binding Path=Game.Player.Score,UpdateSourceTrigger=PropertyChanged}"
+            Foreground="White"
+            FontSize="24"
+            FontWeight="Bold"
+            >
+            
+        </TextBlock>
+    </Canvas>
+</Window>
